@@ -1,10 +1,25 @@
 class CoinAcceptor {
     private int numberOfQuartersCurrentlyInMachine = 3;
-    private int numberOfDimesCurrentlyInMachine = 1;
-    private int numberOfNicklesCurrentlyInMachine = 3;
-    private String message = "";
+    private int numberOfDimesCurrentlyInMachine = 0;
+    private int numberOfNicklesCurrentlyInMachine = 1;
 
+    int getNumberOfQuartersCurrentlyInMachine() {
+        return numberOfQuartersCurrentlyInMachine;
+    }
 
+    int getNumberOfDimesCurrentlyInMachine() {
+        return numberOfDimesCurrentlyInMachine;
+    }
+
+    int getNumberOfNicklesCurrentlyInMachine() {
+        return numberOfNicklesCurrentlyInMachine;
+    }
+
+    void emptyCoins() {
+        numberOfDimesCurrentlyInMachine = 0;
+        numberOfNicklesCurrentlyInMachine = 0;
+        numberOfQuartersCurrentlyInMachine = 0;
+    }
 
     double determineCoinValue(Coin coin) {
         //These are not real coin sizes
@@ -13,21 +28,24 @@ class CoinAcceptor {
         final int nickleSize = 3;
         double coinValue = 0.0d;
         int coinSize = coin.getCoinSize();
-        if(coinSize == quarterSize){
+        if (coinSize == quarterSize) {
             coinValue = 0.25d;
+            numberOfQuartersCurrentlyInMachine += 1;
         }
-        if(coinSize == dimeSize){
+        if (coinSize == dimeSize) {
             coinValue = 0.1d;
+            numberOfDimesCurrentlyInMachine += 1;
         }
-        if(coinSize == nickleSize){
+        if (coinSize == nickleSize) {
             coinValue = 0.05d;
+            numberOfNicklesCurrentlyInMachine += 1;
         }
         return coinValue;
     }
 
 
     String determineIfExactChangeIsNeeded() {
-        message = "\nChange available";
+        String message = "\nChange available";
         if ((numberOfNicklesCurrentlyInMachine < 2) || (numberOfDimesCurrentlyInMachine < 1)) {
             message = "\nExact change is needed";
         }
@@ -36,13 +54,13 @@ class CoinAcceptor {
 
     String giveChange(double changeNeeded) {
         String changeMessage = "Change : $" + String.format("%.2f", changeNeeded) + "\n";
-        double quartersToReturn = (changeNeeded - (changeNeeded % 0.25)) / 0.25;
+        double quartersToReturn = (changeNeeded - (changeNeeded % 0.25d)) / 0.25d;
         changeMessage += ((int) quartersToReturn) + " quarters returned\n";
-        changeNeeded = (changeNeeded % 0.25) + .0001;
-        double dimesToReturn = (changeNeeded - (changeNeeded % 0.1)) / 0.1;
+        changeNeeded = (changeNeeded % 0.25d);
+        double dimesToReturn = (changeNeeded - (changeNeeded % 0.1d)) / 0.1d;
         changeMessage += ((int) dimesToReturn) + " dimes returned\n";
-        changeNeeded = changeNeeded % 0.10;
-        double nicklesToReturn = (changeNeeded - (changeNeeded % .05)) / 0.05;
+        changeNeeded = changeNeeded % 0.10d;
+        double nicklesToReturn = (changeNeeded - (changeNeeded % .05d)) / 0.05d;
         changeMessage += ((int) nicklesToReturn) + " nickles returned\n";
         numberOfQuartersCurrentlyInMachine -= quartersToReturn;
         numberOfDimesCurrentlyInMachine -= dimesToReturn;
@@ -50,8 +68,5 @@ class CoinAcceptor {
         return changeMessage;
     }
 
-    String getMessage() {
-        return message;
-    }
 
 }
