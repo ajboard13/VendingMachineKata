@@ -1,3 +1,4 @@
+import java.util.Objects;
 
 class VendingMachine {
     private String itemChosen = "No item selected";
@@ -48,18 +49,6 @@ class VendingMachine {
         return amountOfMoneyNeeded;
     }
 
-    int getNumberOfChipsInStock() {
-        return numberOfChipsInStock;
-    }
-
-    int getNumberOfCandyInStock() {
-        return numberOfCandyInStock;
-    }
-
-    int getNumberOfSodaInStock() {
-        return numberOfSodaInStock;
-    }
-
     void determineItemSelected(int choice) {
         switch (choice) {
             case 1:
@@ -104,14 +93,14 @@ class VendingMachine {
     }
 
     private void setAmountOfMoneyNeeded() {
-        if (itemChosen == "Chips") {
+        if (Objects.equals(itemChosen, "Chips")) {
             amountOfMoneyNeeded = 0.5d;
         }
-        if (itemChosen == "Candy") {
+        if (Objects.equals(itemChosen, "Candy")) {
             amountOfMoneyNeeded = 0.65d;
 
         }
-        if (itemChosen == "Soda") {
+        if (Objects.equals(itemChosen, "Soda")) {
             amountOfMoneyNeeded = 1.0d;
         }
 
@@ -119,10 +108,10 @@ class VendingMachine {
 
     String dispenseAnItem() {
         String message;
-        if (itemChosen == "No item selected") {
+        if (Objects.equals(itemChosen, "No item selected")) {
             message = "Please select an item first";
         } else if (valueOfMoneyInserted >= amountOfMoneyNeeded) {
-            message = itemChosen + " has been dispensed, enjoy!";
+            message = itemChosen + " has been dispensed\n THANK YOU";
         } else {
             message = "Not enough money inserted";
         }
@@ -137,14 +126,14 @@ class VendingMachine {
     }
 
     private void decrementItemInStock() {
-        if (itemChosen == "Chips") {
+        if (Objects.equals(itemChosen, "Chips")) {
             numberOfChipsInStock -= 1;
         }
-        if (itemChosen == "Candy") {
+        if (Objects.equals(itemChosen, "Candy")) {
             numberOfCandyInStock -= 1;
 
         }
-        if (itemChosen == "Soda") {
+        if (Objects.equals(itemChosen, "Soda")) {
             numberOfSodaInStock -= 1;
         }
     }
@@ -161,7 +150,7 @@ class VendingMachine {
 
     double determineChangeNeeded() {
         double changeNeeded;
-        if (coinAcceptor.determineIfExactChangeIsNeeded() != "\nChange available" && valueOfMoneyInserted > amountOfMoneyNeeded) {
+        if (!Objects.equals(coinAcceptor.determineIfExactChangeIsNeeded(), "\nChange available") && valueOfMoneyInserted > amountOfMoneyNeeded) {
             System.out.println("Exact change needed. Coins Returned");
             changeNeeded = valueOfMoneyInserted;
         } else {
@@ -176,7 +165,7 @@ class VendingMachine {
 
     boolean checkForValidItemSelection() {
         boolean validItem = true;
-        if (itemChosen == "Chips" || itemChosen == "Candy" || itemChosen == "Soda") {
+        if (Objects.equals(itemChosen, "Chips") || Objects.equals(itemChosen, "Candy") || Objects.equals(itemChosen, "Soda")) {
             validItem = false;
         } else {
             displayOutOfStockOrItemNotSelected();
