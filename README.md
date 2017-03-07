@@ -15,7 +15,8 @@ The point of this kata to to provide a larger than trivial exercise that can be 
 Features
 
 
-Q:
+**Q**:
+
 Accept Coins
 
 As a vendor
@@ -31,7 +32,8 @@ NOTE: The temptation here will be to create Coin objects that know their value. 
 I started by making a class for coins. they don't know there value as suggested but instead contin an integer size that is used in another method to determine their value. the integer size that the inserted coins contain is dependent on the user input. After the coin selection is made, the machine adds the value to thier total and displays said total in the console.
 
 
-Q:
+**Q**:
+
 Select Product
 
 As a vendor
@@ -45,7 +47,8 @@ There are three products: cola for $1.00, chips for $0.50, and candy for $0.65. 
 when the program first runs it asks you to make a selection from a list. The options are the same as the suggested ones. The list to pick from is numbered and the user choice is determined by evaluating the number they input. the method to determine the item sets a global variable containing the item suggested to be used later on as well as the amount of money needed to purchase the item.
 
 
-Q:
+**Q**:
+
 Make Change
 
 As a vendor
@@ -59,7 +62,8 @@ When a product is selected that costs less than the amount of money in the machi
 after product selection in the previous solution the user is prompted to insert coins. this loops untilthe money inserted is greater than or equal to the amount needed. after, the product is dispensed, change is given and the machine starts from the beginning or exits.
 
 
-Q:
+**Q**:
+
 Return Coins
 
 As a customer
@@ -72,7 +76,8 @@ When the return coins button is pressed, the money the customer has placed in th
 
 When the list of coin options is given there is an extra option to return the coins. this will return the coins inserted and set the amount of money needed to 0 which will break the loop and the user can start again from the beginning.
 
-Q:
+**Q**:
+
 Sold Out
 
 As a customer
@@ -86,7 +91,8 @@ When the item selected by the customer is out of stock, the machine displays SOL
 I used an integer variable for each item that corresponds with how many are left in the machine and they are set to 3 when the machine is initialized. after each purchase of an item, its variable is decremented by one. Once at zero, if the item is selected the machine will display an out of stock message and have the user select another item.
 
 
-Q:
+**Q**:
+
 Exact Change Only
 
 As a customer
