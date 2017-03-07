@@ -29,7 +29,7 @@ class VendingMachine {
     }
 
     void displayCoinOptions(){
-        System.out.println("\nINSERT COIN\n1.)Quarter\n2.)Dime\n3.)Nickle");
+        System.out.println("\nINSERT COIN\n1.)Quarter\n2.)Dime\n3.)Nickle\n4.)Return coins");
     }
 
     void displayContinueQuestion(){
@@ -151,7 +151,12 @@ class VendingMachine {
 
     void insertACoin(int coinSize) {
         Coin coin = new Coin(coinSize);
-        valueOfMoneyInserted += coinAcceptor.determineCoinValue(coin);
+        if (coinSize == 4){
+            giveChange(valueOfMoneyInserted);
+            amountOfMoneyNeeded = 0;
+        }else {
+            valueOfMoneyInserted += coinAcceptor.determineCoinValue(coin);
+        }
     }
 
     double determineChangeNeeded() {

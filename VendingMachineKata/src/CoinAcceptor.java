@@ -1,7 +1,13 @@
 class CoinAcceptor {
-    private int numberOfQuartersCurrentlyInMachine = 3;
-    private int numberOfDimesCurrentlyInMachine = 0;
-    private int numberOfNicklesCurrentlyInMachine = 1;
+    private int numberOfQuartersCurrentlyInMachine;
+    private int numberOfDimesCurrentlyInMachine;
+    private int numberOfNicklesCurrentlyInMachine;
+
+    CoinAcceptor() {
+        numberOfQuartersCurrentlyInMachine = 3;
+        numberOfDimesCurrentlyInMachine = 0;
+        numberOfNicklesCurrentlyInMachine = 1;
+    }
 
     int getNumberOfQuartersCurrentlyInMachine() {
         return numberOfQuartersCurrentlyInMachine;
