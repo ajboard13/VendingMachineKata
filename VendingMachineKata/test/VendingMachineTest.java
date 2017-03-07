@@ -102,7 +102,7 @@ public class VendingMachineTest {
         vm.determineItemSelected(1);
         vm.insertACoin(1);
         vm.insertACoin(1);
-        assertEquals("Chips has been dispensed, enjoy!", vm.dispenseAnItem());
+        assertEquals("Chips has been dispensed\n THANK YOU", vm.dispenseAnItem());
     }
 
     @Test
@@ -112,7 +112,7 @@ public class VendingMachineTest {
         vm.insertACoin(1);
         vm.insertACoin(2);
         vm.insertACoin(3);
-        assertEquals("Candy has been dispensed, enjoy!", vm.dispenseAnItem());
+        assertEquals("Candy has been dispensed\n THANK YOU", vm.dispenseAnItem());
     }
 
     @Test
@@ -122,7 +122,7 @@ public class VendingMachineTest {
         vm.insertACoin(1);
         vm.insertACoin(1);
         vm.insertACoin(1);
-        assertEquals("Soda has been dispensed, enjoy!", vm.dispenseAnItem());
+        assertEquals("Soda has been dispensed\n THANK YOU", vm.dispenseAnItem());
     }
 
     @Test
